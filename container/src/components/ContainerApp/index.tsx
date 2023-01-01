@@ -49,10 +49,11 @@ export const ContainerApp = ({
         backgroundColor="#6F60EA"
       >
         <Heading color="#fff">CONTAINER</Heading>
-        <Text style={{ color: "white" }}>Container click count: {count}</Text>
+        <Text color="white">Container click count: {count}</Text>
         <Button onClick={() => setCount((prevState) => prevState + 1)}>
           Click me
         </Button>
+        <br />
         <Flex direction="row" justifyContent="space-around">
           <React.Suspense fallback={<Spinner size="xl" />}>
             <Box
