@@ -22,7 +22,3 @@ Lerna will start all 3 projects.
 ## Tech Stack
 
 React, Typescript, Chakra UI, Webpack, Lerna, React Router
-
-## Article
-
-If you are curious about building this template head over to [Introduction to Micro Frontends with Module Federation, React and Typescript](https://ogzhanolguncu.com/blog/micro-frontends-with-module-federation)
