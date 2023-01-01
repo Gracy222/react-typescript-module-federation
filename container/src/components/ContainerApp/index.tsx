@@ -9,13 +9,15 @@ import {
   Image,
   Link,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 
 var version = process.env.BUILD_DATE;
 
 type ContainerAppProps = {
-  CounterAppOne: React.LazyExoticComponent<React.ComponentType<{}>>;
+  CounterAppOne: React.LazyExoticComponent<
+    React.ComponentType<{ parentCount?: number }>
+  >;
   CounterAppTwo: React.LazyExoticComponent<React.ComponentType<{}>>;
 };
 
@@ -23,6 +25,8 @@ export const ContainerApp = ({
   CounterAppOne,
   CounterAppTwo,
 }: ContainerAppProps) => {
+  const [count, setCount] = useState(0);
+
   return (
     <Center
       height="100vh"
@@ -38,7 +42,6 @@ export const ContainerApp = ({
       <Flex
         border="1px solid #151421"
         borderRadius="1rem"
-        height="50vh"
         justifyContent="space-around"
         alignItems="center"
         flexDirection="column"
@@ -46,6 +49,10 @@ export const ContainerApp = ({
         backgroundColor="#6F60EA"
       >
         <Heading color="#fff">CONTAINER</Heading>
+        <Text style={{ color: "white" }}>Container click count: {count}</Text>
+        <Button onClick={() => setCount((prevState) => prevState + 1)}>
+          Click me
+        </Button>
         <Flex direction="row" justifyContent="space-around">
           <React.Suspense fallback={<Spinner size="xl" />}>
             <Box
@@ -56,11 +63,11 @@ export const ContainerApp = ({
               backgroundColor="#fff"
             >
               <Heading color="#6F60EA" mb="1rem">
-                APP-1
+                APP 1
               </Heading>
-              <CounterAppOne />
+              <CounterAppOne parentCount={count} />
               <Button mt="1rem" w="100%" to="/app1" as={RouterLink}>
-                To App1
+                To App 1
               </Button>
             </Box>
           </React.Suspense>
@@ -72,7 +79,7 @@ export const ContainerApp = ({
               backgroundColor="#fff"
             >
               <Heading color="#6F60EA" mb="1rem">
-                APP-2
+                APP 2
               </Heading>
               <CounterAppTwo />
               <Button
@@ -82,7 +89,7 @@ export const ContainerApp = ({
                 to="/app2"
                 as={RouterLink}
               >
-                To App2
+                To App 2
               </Button>
             </Box>
           </React.Suspense>
