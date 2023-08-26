@@ -1,4 +1,4 @@
-# Webpack 5 Module Federation with React/Typescript
+# react  Webpack 5 Module Federation with React/Typescript
 
 This project consist of three pieces: a host app `container` and two remotes `app1` `app2`.
 
